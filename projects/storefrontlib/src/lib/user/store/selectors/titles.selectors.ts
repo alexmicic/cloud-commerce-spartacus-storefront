@@ -7,12 +7,12 @@ export const getTitlesState = createSelector(
   (state: fromFeature.UserState) => state.titles
 );
 
-export const getTitlesEntites: MemoizedSelector<any, any> = createSelector(
-  getTitlesState,
-  fromReducer.getTitlesEntites
-);
+export const getTitlesEntites: MemoizedSelector<
+  any,
+  { [code: string]: any }
+> = createSelector(getTitlesState, fromReducer.getTitlesEntites);
 
-export const getAllTitles: MemoizedSelector<any, any> = createSelector(
+export const getAllTitles: MemoizedSelector<any, any[]> = createSelector(
   getTitlesEntites,
   entites => {
     return Object.keys(entites).map(code => entites[code]);

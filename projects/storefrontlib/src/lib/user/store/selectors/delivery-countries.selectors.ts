@@ -17,7 +17,7 @@ export const getDeliveryCountriesEntites: MemoizedSelector<
 
 export const getAllDeliveryCountries: MemoizedSelector<
   any,
-  any
+  any[]
 > = createSelector(getDeliveryCountriesEntites, entites => {
   return Object.keys(entites).map(isocode => entites[isocode]);
 });
