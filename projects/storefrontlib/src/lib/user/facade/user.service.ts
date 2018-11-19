@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as fromStore from '../store';
+import { Order } from '@spartacus/core';
 
 @Injectable()
 export class UserService {
@@ -14,7 +15,7 @@ export class UserService {
     select(fromStore.getAllTitles)
   );
 
-  readonly orderDetails$: Observable<any> = this.store.pipe(
+  readonly orderDetails$: Observable<Order> = this.store.pipe(
     select(fromStore.getOrderDetails)
   );
 
