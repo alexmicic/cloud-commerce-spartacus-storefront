@@ -1,11 +1,12 @@
 import * as fromUserDetailsAction from '../actions/user-details.action';
+import { User } from '@spartacus/core';
 
 export interface UserDetailsState {
-  details: any;
+  details: User;
 }
 
 export const initialState: UserDetailsState = {
-  details: <any>{}
+  details: <User>{}
 };
 
 export function reducer(
