@@ -1,4 +1,5 @@
 import * as fromUserPaymentMethodsAction from './payment-methods.action';
+import { PaymentDetailsList } from '@spartacus/core';
 
 const userId = '123';
 
@@ -31,7 +32,9 @@ describe('User Payment Methods Actions', () => {
   });
 
   describe('LoadUserPaymentMethodsSuccess Action', () => {
-    const mockUserPaymentMethods = { payments: ['payment1', 'payment2'] };
+    const mockUserPaymentMethods: PaymentDetailsList = {
+      payments: [{ id: 'payment1' }, { id: 'payment2' }]
+    };
 
     it('should create the action', () => {
       const action = new fromUserPaymentMethodsAction.LoadUserPaymentMethodsSuccess(

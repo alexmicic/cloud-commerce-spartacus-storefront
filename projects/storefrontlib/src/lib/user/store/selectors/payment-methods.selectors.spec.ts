@@ -4,8 +4,11 @@ import { Store, StoreModule, select } from '@ngrx/store';
 import * as fromActions from '../actions';
 import * as fromReducers from '../reducers';
 import * as fromSelectors from '../selectors';
+import { PaymentDetailsList } from '@spartacus/core';
 
-const mockUserPaymentMethods = ['payment1', 'payment2'];
+const mockUserPaymentMethods: PaymentDetailsList = {
+  payments: [{ id: 'payment1' }, { id: 'payment2' }]
+};
 
 describe('User Payment Methods Selectors', () => {
   let store: Store<fromReducers.UserState>;
@@ -29,7 +32,7 @@ describe('User Payment Methods Selectors', () => {
         .pipe(select(fromSelectors.getPaymentMethods))
         .subscribe(value => (result = value));
 
-      expect(result).toEqual([]);
+      expect((result as PaymentDetailsList).payments).toEqual([]);
 
       store.dispatch(
         new fromActions.LoadUserPaymentMethodsSuccess(mockUserPaymentMethods)

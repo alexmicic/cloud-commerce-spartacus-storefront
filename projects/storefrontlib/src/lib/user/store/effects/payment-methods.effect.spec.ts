@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { OccUserService } from '../../../occ/user/user.service';
 import * as fromUserPaymentMethodsAction from '../actions/payment-methods.action';
 import * as fromUserPaymentMethodsEffect from './payment-methods.effect';
+import { PaymentDetailsList } from '@spartacus/core';
 
 class MockOccUserService {
   loadUserPaymentMethods(_userId: string): Observable<any> {
@@ -13,7 +14,9 @@ class MockOccUserService {
   }
 }
 
-const mockUserPaymentMethods = { payments: ['payment1', 'payment2'] };
+const mockUserPaymentMethods: PaymentDetailsList = {
+  payments: [{ id: 'payment1' }, { id: 'payment2' }]
+};
 
 describe('User Payment Methods effect', () => {
   let userPaymentMethodsEffect: fromUserPaymentMethodsEffect.UserPaymentMethodsEffects;
@@ -45,7 +48,7 @@ describe('User Payment Methods effect', () => {
         '123'
       );
       const completion = new fromUserPaymentMethodsAction.LoadUserPaymentMethodsSuccess(
-        mockUserPaymentMethods.payments
+        mockUserPaymentMethods
       );
 
       actions$ = hot('-a', { a: action });

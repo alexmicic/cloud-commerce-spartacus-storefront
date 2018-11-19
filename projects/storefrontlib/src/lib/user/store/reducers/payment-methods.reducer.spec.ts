@@ -1,5 +1,6 @@
 import * as fromUserPaymentMethodsAction from '../actions/payment-methods.action';
 import * as fromUserPaymentMethodsReducer from './payment-methods.reducer';
+import { PaymentDetailsList } from '@spartacus/core';
 
 describe('User Payment Methods Reducer', () => {
   describe('undefined action', () => {
@@ -14,7 +15,9 @@ describe('User Payment Methods Reducer', () => {
 
   describe('LOAD_USER_PAYMENT_METHODS_SUCCESS action', () => {
     it('should populate the user Payment Methods state entities', () => {
-      const mockUserPaymentMethods = ['payment1', 'payment2'];
+      const mockUserPaymentMethods: PaymentDetailsList = {
+        payments: [{ id: 'payment1' }, { id: 'payment2' }]
+      };
 
       const { initialState } = fromUserPaymentMethodsReducer;
       const action = new fromUserPaymentMethodsAction.LoadUserPaymentMethodsSuccess(

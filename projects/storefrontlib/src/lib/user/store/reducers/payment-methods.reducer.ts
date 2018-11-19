@@ -1,12 +1,13 @@
 import * as fromPaymentMethodsAction from '../actions/payment-methods.action';
+import { PaymentDetailsList } from '@spartacus/core';
 
 export interface UserPaymentMethodsState {
-  list: any[];
+  list: PaymentDetailsList;
   isLoading: boolean;
 }
 
 export const initialState: UserPaymentMethodsState = {
-  list: [],
+  list: { payments: [] },
   isLoading: false
 };
 
