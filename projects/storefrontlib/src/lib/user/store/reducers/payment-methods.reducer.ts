@@ -1,7 +1,7 @@
 import * as fromPaymentMethodsAction from '../actions/payment-methods.action';
 
 export interface UserPaymentMethodsState {
-  list: any;
+  list: any[];
   isLoading: boolean;
 }
 
