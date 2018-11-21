@@ -5,8 +5,9 @@ import * as NgrxStore from '@ngrx/store';
 import * as fromStore from '../store';
 
 import { ProductSearchService } from './product-search.service';
-import { SearchConfig } from '@spartacus/core';
+
 import { EMPTY, of } from 'rxjs';
+import { SearchConfig } from '../model/search-config';
 
 describe('ProductSearchService', () => {
   let service: ProductSearchService;
