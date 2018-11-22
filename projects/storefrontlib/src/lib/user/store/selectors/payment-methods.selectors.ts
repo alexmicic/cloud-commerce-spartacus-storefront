@@ -3,6 +3,7 @@ import { createSelector, MemoizedSelector } from '@ngrx/store';
 import * as fromFeature from '../reducers';
 import * as fromUserPaymentMethodsReducer from '../reducers/payment-methods.reducer';
 import { UserPaymentMethodsState } from '../reducers/payment-methods.reducer';
+import { PaymentDetailsList } from '@spartacus/core';
 
 export const getPaymentMethodsState: MemoizedSelector<
   any,
@@ -12,7 +13,10 @@ export const getPaymentMethodsState: MemoizedSelector<
   (state: fromFeature.UserState) => state.payments
 );
 
-export const getPaymentMethods: MemoizedSelector<any, any> = createSelector(
+export const getPaymentMethods: MemoizedSelector<
+  any,
+  PaymentDetailsList
+> = createSelector(
   getPaymentMethodsState,
   fromUserPaymentMethodsReducer.getPaymentMethods
 );
