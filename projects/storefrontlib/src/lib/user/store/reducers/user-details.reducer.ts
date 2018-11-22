@@ -15,7 +15,7 @@ export function reducer(
 ): UserDetailsState {
   switch (action.type) {
     case fromUserDetailsAction.LOAD_USER_DETAILS_SUCCESS: {
-      const details = action.payload;
+      const details: User = action.payload;
 
       return {
         ...state,

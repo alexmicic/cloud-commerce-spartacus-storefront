@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { OccUserService } from '../../../occ/user/user.service';
 import * as fromUserDetailsAction from '../actions/user-details.action';
 import * as fromUserDetailsEffect from './user-details.effect';
+import { User } from '@spartacus/core';
 
 class MockOccUserService {
   loadUser(_username: string): Observable<any> {
@@ -13,12 +14,11 @@ class MockOccUserService {
   }
 }
 
-const mockUserDetails: any = {
+const mockUserDetails: User = {
   displayUid: 'Display Uid',
   firstName: 'First',
   lastName: 'Last',
   name: 'First Last',
-  type: 'Mock Type',
   uid: 'UID'
 };
 
