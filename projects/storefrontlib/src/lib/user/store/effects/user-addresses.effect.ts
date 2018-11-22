@@ -16,7 +16,7 @@ export class UserAddressesEffects {
       return this.occUserService.loadUserAddresses(payload).pipe(
         map((addressesList: any) => {
           return new fromUserAddressesAction.LoadUserAddressesSuccess(
-            addressesList.addresses
+            addressesList
           );
         }),
         catchError(error =>
