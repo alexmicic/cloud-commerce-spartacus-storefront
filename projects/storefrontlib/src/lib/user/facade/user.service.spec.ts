@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { StoreModule, Store } from '@ngrx/store';
-
+import { Address } from '@spartacus/core';
 import * as fromStore from '../store';
 import { UserService } from './user.service';
 import { PaymentDetailsList, Region } from '@spartacus/core';
@@ -58,15 +58,17 @@ describe('UserService', () => {
   });
 
   it('should be able to get user address', () => {
-    store.dispatch(
-      new fromStore.LoadUserAddressesSuccess(['address1', 'address2'])
-    );
+    const mockUserAddresses: Address[] = [
+      { id: 'address1' },
+      { id: 'address2' }
+    ];
+    store.dispatch(new fromStore.LoadUserAddressesSuccess(mockUserAddresses));
 
     let addresses;
     service.addresses$.subscribe(data => {
       addresses = data;
     });
-    expect(addresses).toEqual(['address1', 'address2']);
+    expect(addresses).toEqual([{ id: 'address1' }, { id: 'address2' }]);
   });
 
   it('should be able to get Address loading flag', () => {
