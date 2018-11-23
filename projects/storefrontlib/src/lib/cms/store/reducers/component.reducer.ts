@@ -1,4 +1,5 @@
 import * as fromComponent from '../actions/component.action';
+import { Component } from '@spartacus/core';
 
 export interface ComponentState {
   entities: { [id: string]: any };
@@ -14,7 +15,7 @@ export function reducer(
 ): ComponentState {
   switch (action.type) {
     case fromComponent.LOAD_COMPONENT_SUCCESS: {
-      const component = action.payload;
+      const component: Component = action.payload;
 
       return {
         ...state,
@@ -26,11 +27,11 @@ export function reducer(
     }
 
     case fromComponent.GET_COMPONENET_FROM_PAGE: {
-      const components = action.payload;
+      const components: Component[] = action.payload;
       const entities = components
         .filter(comp => state.entities[comp.uid] == null)
         .reduce(
-          (compEntities: { [uid: string]: any }, component: any) => {
+          (compEntities: { [uid: string]: any }, component: Component) => {
             return {
               ...compEntities,
               [component.uid]: component
